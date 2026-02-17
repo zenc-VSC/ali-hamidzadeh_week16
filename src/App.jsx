@@ -9,6 +9,11 @@ function App() {
   const [isSelected, setIsSelected] = useState(false);
   const [hint, setHint] = useState("Search for a city...");
 
+  const [recentSearches, setRecentSearches] = useState(() => {
+    const saved = localStorage.getItem("recentCities");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const handleChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
@@ -31,10 +36,19 @@ function App() {
       setHint("Search for a city...");
     }
   };
+
   const handleCityClick = (city) => {
     setSearchTerm(city);
     setHint("");
     setIsSelected(true);
+
+    const updated = [city, ...recentSearches.filter((c) => c !== city)].slice(
+      0,
+      5,
+    );
+    setRecentSearches(updated);
+    localStorage.setItem("recentCities", JSON.stringify(updated));
+
     setSuggestions([]);
   };
 
