@@ -6,22 +6,36 @@ import styles from "./App.module.css";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-
+  const [isSelected, setIsSelected] = useState(false);
   const [hint, setHint] = useState("Search for a city...");
 
   const handleChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
+    setIsSelected(false);
 
     if (value.length > 0) {
       const filtered = cities.filter((city) =>
         city.toLowerCase().startsWith(value.toLowerCase()),
       );
       setSuggestions(filtered.slice(0, 10));
+      if (filtered.length > 0) {
+        const firstMatch = filtered[0];
+        const remainingText = firstMatch.slice(value.length);
+        setHint(remainingText);
+      } else {
+        setHint("");
+      }
     } else {
       setSuggestions([]);
       setHint("Search for a city...");
     }
+  };
+  const handleCityClick = (city) => {
+    setSearchTerm(city);
+    setHint("");
+    setIsSelected(true);
+    setSuggestions([]);
   };
 
   return (
@@ -33,7 +47,9 @@ function App() {
       {searchTerm && suggestions.length > 0 && (
         <ul className={styles.suggestionsList}>
           {suggestions.map((city) => (
-            <li key={city}>{city}</li>
+            <li key={city} onClick={() => handleCityClick(city)}>
+              {city}
+            </li>
           ))}
         </ul>
       )}
