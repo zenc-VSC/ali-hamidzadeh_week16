@@ -32,8 +32,8 @@ body {
 
 .input label {
   position: absolute;
-  left: 24px;
-  top: 15px;
+  left: 23px;
+  top: 13px;
   font-size: 18px;
   opacity: 0.4;
   z-index: 1;
