@@ -32,15 +32,14 @@ body {
 
 .input label {
   position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
+  left: 24px;
+  top: 15px;
   font-size: 18px;
   opacity: 0.4;
   z-index: 1;
   user-select: none;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   pointer-events: none;
   color: #666;
 }
