@@ -1,6 +1,6 @@
 .container {
   padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   max-width: 600px;
   margin: 0 auto;
   min-height: 100vh;
@@ -13,4 +13,50 @@
   font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: -0.5px;
+}
+.container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container li {
+  padding: 14px 20px;
+  background: white;
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  color: #333;
+}
+
+.container li:last-child {
+  border-bottom: none;
+}
+
+.container li:hover {
+  background: #f8f9ff;
+  padding-left: 24px;
+  color: #4a90e2;
+}
+
+.container li:active {
+  background: #e8f0fe;
 }
