@@ -55,18 +55,39 @@ function App() {
   return (
     <div className={styles.container}>
       <h1>City Search</h1>
+
       <div className={styles.searchWrapper}>
         <Input handleChange={handleChange} hint={hint} value={searchTerm} />
+
+        {searchTerm === "" && recentSearches.length > 0 && (
+          <div className={styles.recent}>
+            <p>Recent Searches:</p>
+            <ul>
+              {recentSearches.map((city) => (
+                <li key={city} onClick={() => handleCityClick(city)}>
+                  🕒 {city}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {searchTerm && suggestions.length > 0 && (
+          <ul className={styles.suggestionsList}>
+            {suggestions.map((city) => (
+              <li key={city} onClick={() => handleCityClick(city)}>
+                {city}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {searchTerm && suggestions.length === 0 && !isSelected && (
+          <div className={styles.noResults}>
+            <p>{`No cities found matching "${searchTerm}"`}</p>
+          </div>
+        )}
       </div>
-      {searchTerm && suggestions.length > 0 && (
-        <ul className={styles.suggestionsList}>
-          {suggestions.map((city) => (
-            <li key={city} onClick={() => handleCityClick(city)}>
-              {city}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 }
