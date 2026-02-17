@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.input input {
+  width: 100%;
+  font-size: 18px;
+  padding: 16px 20px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  outline: none;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.input input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.2);
+  transform: translateY(-2px);
+}
+
+.input label {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  font-size: 18px;
+  opacity: 0.4;
+  z-index: 1;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: #666;
+}
